@@ -24,17 +24,6 @@ local ChangeTheme = false
 
 -- // Utility Functions
 do
-    function Utility:Log(Type, Message)
-        Type = Type:lower()
-
-        if Type == 'error' then
-            error('[ Visual ] Error: ' .. Message)
-        elseif Type == 'log' then
-            print('[ Visual ] ' .. Message)
-        elseif Type == 'warn' then
-            warn('[ Visual ] Warning: ' .. Message)
-        end
-    end
 
     function Utility:HasProperty(Instance, Property)
         local Success = pcall(function()
@@ -1021,8 +1010,8 @@ function Library:CreateWindow(Properties)
 
         CommandInput.Text = ''
 
-        local Command = assert(Commands[First], '[Visual] Command Not Found: ' .. First)
-
+        local Command = Commands[First]
+        if not Command then return end
         local NumberOfArguments = #Command.Arguments
 
         for Index, Argument in next, Split do
@@ -1039,8 +1028,6 @@ function Library:CreateWindow(Properties)
                     Missing = Missing .. tostring(Command.Arguments[Index])
                 end
             end
-
-            Utility:Log('Error', 'Missing Arguments: ' .. Missing .. ' | Command: ' .. First)
 
             if not HoverDebounce then
                 if Main.Position.Y == UDim.new(1, 0) or Main.Position.Y == UDim.new(0, -36) then
@@ -1324,11 +1311,7 @@ function Library:CreateWindow(Properties)
     end
 
     function WindowFunctions:AddTheme(Name, Theme)
-        if Library.Themes[Name] then
-            Utility:Log('Error', 'A Theme Already Exists With The Name' .. Name)
-        else
             Library.Themes[Name:lower()] = Theme
-        end
     end
 
     function WindowFunctions:GetThemes(Names)
@@ -1366,8 +1349,6 @@ function Library:CreateWindow(Properties)
                 Library.Theme = Library.Themes[NewTheme]
                 Theme = Library.Theme
                 ChangeThemeActive()
-            else
-                Utility:Log('Error', 'Theme Doesn\'t exist: ' .. NewTheme)
             end
         end
     end
