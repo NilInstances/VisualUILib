@@ -11,7 +11,6 @@ local Players = cloneref(game:GetService('Players'))
 local Workspace = cloneref(game:GetService('Workspace'))
 local RunService = cloneref(game:GetService('RunService'))
 local Lighting = cloneref(game:GetService('Lighting'))
-
 -- // Variables
 local Library = {}
 local Utility = {}
@@ -253,26 +252,82 @@ Library.Themes = {
         SecondaryTextColor = Color3.fromRGB(175, 175, 175)
     },
     ['light'] = {
-        BackgroundColor = Color3.fromRGB(240, 240, 240),
-        SecondaryColor = Color3.fromRGB(200, 200, 200),
+        BackgroundColor = Color3.fromRGB(255, 255, 255),
+        SecondaryColor = Color3.fromRGB(225, 225, 225),
         AccentColor = Color3.fromRGB(125, 125, 125),
         PrimaryTextColor = Color3.fromRGB(0, 0, 0),
         SecondaryTextColor = Color3.fromRGB(75, 75, 75)
     },
-    ['darker'] = {
-        BackgroundColor = Color3.fromRGB(24, 27, 33),
+    ['discord'] = {
+        BackgroundColor = Color3.fromRGB(54, 57, 63),
         PrimaryTextColor = Color3.fromRGB(255, 255, 255),
-        SecondaryTextColor = Color3.fromRGB(90, 90, 85),
-        AccentColor = Color3.fromRGB(45, 45, 45),
-        SecondaryColor = Color3.fromRGB(39, 39, 39)
+        SecondaryTextColor = Color3.fromRGB(110, 110, 115),
+        AccentColor = Color3.fromRGB(75, 75, 75),
+        SecondaryColor = Color3.fromRGB(59, 65, 72)
     },
-    ['lighter'] = {
-        BackgroundColor = Color3.fromRGB(255, 255, 255),
-        SecondaryColor = Color3.fromRGB(235, 235, 235),
-        AccentColor = Color3.fromRGB(135, 135, 135),
-        PrimaryTextColor = Color3.fromRGB(0, 0, 0),
-        SecondaryTextColor = Color3.fromRGB(75, 75, 75)
+    ['redandblack'] = {
+        BackgroundColor = Color3.fromRGB(0, 0, 0),
+        PrimaryTextColor = Color3.fromRGB(255, 255, 255),
+        SecondaryTextColor = Color3.fromRGB(135, 135, 135),
+        AccentColor = Color3.fromRGB(255, 0, 0),
+        SecondaryColor = Color3.fromRGB(50, 50, 50)
     },
+    ['nordicdark'] = {
+        BackgroundColor = Color3.fromRGB(25, 30, 35),
+        PrimaryTextColor = Color3.fromRGB(255, 255, 255),
+        SecondaryTextColor = Color3.fromRGB(135, 135, 135),
+        AccentColor = Color3.fromRGB(50, 60, 70),
+        SecondaryColor = Color3.fromRGB(50, 55, 60)
+    },
+    ['nordiclight'] = {
+        BackgroundColor = Color3.fromRGB(67, 75, 94),
+        PrimaryTextColor = Color3.fromRGB(255, 255, 255),
+        SecondaryTextColor = Color3.fromRGB(135, 135, 135),
+        AccentColor = Color3.fromRGB(92, 97, 116),
+        SecondaryColor = Color3.fromRGB(82, 87, 106)
+    },
+    ['purple'] = {
+        BackgroundColor = Color3.fromRGB(30, 30, 45),
+        PrimaryTextColor = Color3.fromRGB(255, 255, 255),
+        SecondaryTextColor = Color3.fromRGB(135, 135, 135),
+        AccentColor = Color3.fromRGB(60, 60, 80),
+        SecondaryColor = Color3.fromRGB(60, 60, 80)
+    },
+    ['sentinel'] = {
+        BackgroundColor = Color3.fromRGB(30, 30, 30),
+        PrimaryTextColor = Color3.fromRGB(130, 190, 130),
+        SecondaryTextColor = Color3.fromRGB(230, 35, 70),
+        AccentColor = Color3.fromRGB(50, 50, 50),
+        SecondaryColor = Color3.fromRGB(35, 35, 35)
+    },
+    ['synapsex'] = {
+        BackgroundColor = Color3.fromRGB(50, 50, 50),
+        PrimaryTextColor = Color3.fromRGB(255, 255, 255),
+        SecondaryTextColor = Color3.fromRGB(125, 125, 125),
+        AccentColor = Color3.fromRGB(70, 70, 70),
+        SecondaryColor = Color3.fromRGB(65, 65, 65)
+    },
+    ['krnl'] = {
+        BackgroundColor = Color3.fromRGB(40, 40, 40),
+        PrimaryTextColor = Color3.fromRGB(255, 255, 255),
+        SecondaryTextColor = Color3.fromRGB(125, 125, 125),
+        AccentColor = Color3.fromRGB(60, 60, 60),
+        SecondaryColor = Color3.fromRGB(40, 40, 40)
+    },
+    ['scriptware'] = {
+        BackgroundColor = Color3.fromRGB(30, 30, 30),
+        PrimaryTextColor = Color3.fromRGB(0, 125, 255),
+        SecondaryTextColor = Color3.fromRGB(255, 255, 255),
+        AccentColor = Color3.fromRGB(0, 125, 255),
+        SecondaryColor = Color3.fromRGB(45, 45, 45)
+    },
+    ['kiriot'] = {
+        BackgroundColor = Color3.fromRGB(35, 35, 35),
+        PrimaryTextColor = Color3.fromRGB(255, 255, 255),
+        SecondaryTextColor = Color3.fromRGB(135, 135, 135),
+        AccentColor = Color3.fromRGB(255, 170, 60),
+        SecondaryColor = Color3.fromRGB(50, 50, 50)
+    }
 }
 Library.Prefix = Utility:StringToKeyCode(';')
 Library.Theme = nil
@@ -280,8 +335,8 @@ Library.Theme = nil
 -- // CreateWindow - Name, IntroText, IntroIcon, IntroBlur, IntroBlurIntensity, Theme, Position, Draggable, Prefix
 function Library:CreateWindow(Properties)
     -- // Properties
-    local Name = Utility:GetProperty('Window', 'Name', Properties) or 'nil'
-    local IntroText = Utility:GetProperty('Window', 'IntroText', Properties) or 'nil'
+    local Name = Utility:GetProperty('Window', 'Name', Properties) or 'Visual Command UI Library'
+    local IntroText = Utility:GetProperty('Window', 'IntroText', Properties) or 'Visual Command UI Library'
     local IntroIcon = Utility:GetProperty('Window', 'IntroIcon', Properties) or 'rbxassetid://10618644218'
     local IntroBlur = Utility:GetProperty('Window', 'IntroBlur', Properties) or false
     local IntroBlurIntensity = Utility:GetProperty('Window', 'IntroBlurIntensity', Properties) or 15
