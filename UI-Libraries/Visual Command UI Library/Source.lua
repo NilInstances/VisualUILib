@@ -1021,10 +1021,8 @@ function Library:CreateWindow(Properties)
 
         CommandInput.Text = ''
 
-        local Command = Commands[First]
-        if not Command then
-            return
-        end
+        local Command = assert(Commands[First], '[Visual] Command Not Found: ' .. First)
+
         local NumberOfArguments = #Command.Arguments
 
         for Index, Argument in next, Split do
