@@ -1,12 +1,32 @@
+local isfile = isfile or function(file)
+	local suc, res = pcall(function()
+		return readfile(file)
+	end)
+	return suc and res ~= nil and res ~= ''
+end
+local delfile = delfile or function(file)
+	writefile(file, '')
+end
+
+if identifyexecutor then
+	if table.find({'Argon', 'Wave'}, ({identifyexecutor()})[1]) then
+		getgenv().setthreadidentity = nil
+	end
+end
+
+local cloneref = cloneref or function(obj)
+	return obj
+end
+
 -- // Services
-local CoreGui = game:GetService('CoreGui')
-local TweenService = game:GetService('TweenService')
-local UserInputService = game:GetService('UserInputService')
-local TextService = game:GetService('TextService')
-local Players = game:GetService('Players')
-local Workspace = game:GetService('Workspace')
-local RunService = game:GetService('RunService')
-local Lighting = game:GetService('Lighting')
+local CoreGui = cloneref(game:GetService('CoreGui'))
+local TweenService = cloneref(game:GetService('TweenService'))
+local UserInputService = cloneref(game:GetService('UserInputService'))
+local TextService = cloneref(game:GetService('TextService'))
+local Players = cloneref(game:GetService('Players'))
+local Workspace = cloneref(game:GetService('Workspace'))
+local RunService = cloneref(game:GetService('RunService'))
+local Lighting = cloneref(game:GetService('Lighting'))
 
 -- // Variables
 local Library = {}
@@ -354,10 +374,37 @@ function Library:CreateWindow(Properties)
     -- // Destroy Old UI
     Utility:Destroy()
 
+    function randomString()
+        local length = math.random(10,20)
+        local array = {}
+        for i = 1, length do
+            array[i] = string.char(math.random(32, 126))
+        end
+        return table.concat(array)
+    end
+    
+    PARENT = nil
+    if get_hidden_gui or gethui then
+        local hiddenUI = get_hidden_gui or gethui
+        local Main = Instance.new("ScreenGui")
+        Main.Name = randomString()
+        Main.Parent = hiddenUI()
+        PARENT = Main
+    elseif (not is_sirhurt_closure) and (syn and syn.protect_gui) then
+        local Main = Instance.new("ScreenGui")
+        Main.Name = randomString()
+        syn.protect_gui(Main)
+        Main.Parent = COREGUI
+        PARENT = Main
+    elseif COREGUI:FindFirstChild('RobloxGui') then
+        PARENT = COREGUI.RobloxGui
+    end
+
     -- // Create Elements
     local Container = Utility:Create('ScreenGui', {
-        Parent = CoreGui,
-        Name = 'Visual Command UI Library | .gg/puxxCphTnK',
+        Parent = COREGUI,
+        PARENT = Container,
+        Name = randomString(),
         ResetOnSpawn = false
     }, {
         Utility:Create('Frame', {
