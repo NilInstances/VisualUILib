@@ -253,8 +253,8 @@ Library.Themes = {
         SecondaryTextColor = Color3.fromRGB(175, 175, 175)
     },
     ['light'] = {
-        BackgroundColor = Color3.fromRGB(255, 255, 255),
-        SecondaryColor = Color3.fromRGB(225, 225, 225),
+        BackgroundColor = Color3.fromRGB(240, 240, 240),
+        SecondaryColor = Color3.fromRGB(200, 200, 200),
         AccentColor = Color3.fromRGB(125, 125, 125),
         PrimaryTextColor = Color3.fromRGB(0, 0, 0),
         SecondaryTextColor = Color3.fromRGB(75, 75, 75)
@@ -264,71 +264,22 @@ Library.Themes = {
         PrimaryTextColor = Color3.fromRGB(255, 255, 255),
         SecondaryTextColor = Color3.fromRGB(90, 90, 85),
         AccentColor = Color3.fromRGB(45, 45, 45),
-        SecondaryColor = Color3.fromRGB(39, 35, 52)
+        SecondaryColor = Color3.fromRGB(39, 39, 39)
     },
-    ['redandblack'] = {
+    ['lighter'] = {
+        BackgroundColor = Color3.fromRGB(255, 255, 255),
+        SecondaryColor = Color3.fromRGB(235, 235, 235),
+        AccentColor = Color3.fromRGB(135, 135, 135),
+        PrimaryTextColor = Color3.fromRGB(0, 0, 0),
+        SecondaryTextColor = Color3.fromRGB(75, 75, 75)
+    },
+    ['midnight'] = {
         BackgroundColor = Color3.fromRGB(0, 0, 0),
-        PrimaryTextColor = Color3.fromRGB(255, 255, 255),
-        SecondaryTextColor = Color3.fromRGB(135, 135, 135),
-        AccentColor = Color3.fromRGB(255, 0, 0),
-        SecondaryColor = Color3.fromRGB(50, 50, 50)
-    },
-    ['nordicdark'] = {
-        BackgroundColor = Color3.fromRGB(25, 30, 35),
-        PrimaryTextColor = Color3.fromRGB(255, 255, 255),
-        SecondaryTextColor = Color3.fromRGB(135, 135, 135),
-        AccentColor = Color3.fromRGB(50, 60, 70),
-        SecondaryColor = Color3.fromRGB(50, 55, 60)
-    },
-    ['nordiclight'] = {
-        BackgroundColor = Color3.fromRGB(67, 75, 94),
-        PrimaryTextColor = Color3.fromRGB(255, 255, 255),
-        SecondaryTextColor = Color3.fromRGB(135, 135, 135),
-        AccentColor = Color3.fromRGB(92, 97, 116),
-        SecondaryColor = Color3.fromRGB(82, 87, 106)
-    },
-    ['purple'] = {
-        BackgroundColor = Color3.fromRGB(30, 30, 45),
-        PrimaryTextColor = Color3.fromRGB(255, 255, 255),
-        SecondaryTextColor = Color3.fromRGB(135, 135, 135),
-        AccentColor = Color3.fromRGB(60, 60, 80),
-        SecondaryColor = Color3.fromRGB(60, 60, 80)
-    },
-    ['sentinel'] = {
-        BackgroundColor = Color3.fromRGB(30, 30, 30),
-        PrimaryTextColor = Color3.fromRGB(130, 190, 130),
-        SecondaryTextColor = Color3.fromRGB(230, 35, 70),
+        SecondaryColor = Color3.fromRGB(10, 10, 10),
         AccentColor = Color3.fromRGB(50, 50, 50),
-        SecondaryColor = Color3.fromRGB(35, 35, 35)
-    },
-    ['synapsex'] = {
-        BackgroundColor = Color3.fromRGB(50, 50, 50),
         PrimaryTextColor = Color3.fromRGB(255, 255, 255),
-        SecondaryTextColor = Color3.fromRGB(125, 125, 125),
-        AccentColor = Color3.fromRGB(70, 70, 70),
-        SecondaryColor = Color3.fromRGB(65, 65, 65)
+        SecondaryTextColor = Color3.fromRGB(175, 175, 175)
     },
-    ['krnl'] = {
-        BackgroundColor = Color3.fromRGB(40, 40, 40),
-        PrimaryTextColor = Color3.fromRGB(255, 255, 255),
-        SecondaryTextColor = Color3.fromRGB(125, 125, 125),
-        AccentColor = Color3.fromRGB(60, 60, 60),
-        SecondaryColor = Color3.fromRGB(40, 40, 40)
-    },
-    ['scriptware'] = {
-        BackgroundColor = Color3.fromRGB(30, 30, 30),
-        PrimaryTextColor = Color3.fromRGB(0, 125, 255),
-        SecondaryTextColor = Color3.fromRGB(255, 255, 255),
-        AccentColor = Color3.fromRGB(0, 125, 255),
-        SecondaryColor = Color3.fromRGB(45, 45, 45)
-    },
-    ['kiriot'] = {
-        BackgroundColor = Color3.fromRGB(35, 35, 35),
-        PrimaryTextColor = Color3.fromRGB(255, 255, 255),
-        SecondaryTextColor = Color3.fromRGB(135, 135, 135),
-        AccentColor = Color3.fromRGB(255, 170, 60),
-        SecondaryColor = Color3.fromRGB(50, 50, 50)
-    }
 }
 Library.Prefix = Utility:StringToKeyCode(';')
 Library.Theme = nil
