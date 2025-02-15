@@ -101,7 +101,7 @@ do
         local DraggingInput, StartPosition
         local DragStart = Vector3.new(0,0,0)
         
-        local Main = CoreGui:FindFirstChild('Visual Command UI Library | .gg/puxxCphTnK').Main
+        local Main = CoreGui:FindFirstChild(Container).Main
         
         local function Update(Input)
             local Delta = Input.Position - DragStart
@@ -401,7 +401,7 @@ function Library:CreateWindow(Properties)
     end
 
     -- // Create Elements
-    local Container = Utility:Create('ScreenGui', {
+    _G.Container = Utility:Create('ScreenGui', {
         Parent = COREGUI,
         PARENT = Container,
         Name = randomString(),
