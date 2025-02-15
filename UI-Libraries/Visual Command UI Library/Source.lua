@@ -1086,7 +1086,7 @@ function Library:CreateWindow(Properties)
 
             if Main.Position.Y == UDim.new(1, 0) or Main.Position.Y == UDim.new(0, -36) then
                 CommandInput.Text = ''
-
+		end
                 if not HoverDebounce then
                     task.spawn(function()
                         HoverDebounce = true
