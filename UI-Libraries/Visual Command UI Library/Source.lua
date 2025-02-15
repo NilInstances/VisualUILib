@@ -1,23 +1,7 @@
-local isfile = isfile or function(file)
-	local suc, res = pcall(function()
-		return readfile(file)
-	end)
-	return suc and res ~= nil and res ~= ''
+-- // Hidden UI
+if get_hidden_gui or gethui then
+    hui = get_hidden_gui or gethui
 end
-local delfile = delfile or function(file)
-	writefile(file, '')
-end
-
-if identifyexecutor then
-	if table.find({'Argon', 'Wave'}, ({identifyexecutor()})[1]) then
-		getgenv().setthreadidentity = nil
-	end
-end
-
-local cloneref = cloneref or function(obj)
-	return obj
-end
-
 -- // Services
 local CoreGui = cloneref(game:GetService('CoreGui'))
 local TweenService = cloneref(game:GetService('TweenService'))
@@ -101,7 +85,7 @@ do
         local DraggingInput, StartPosition
         local DragStart = Vector3.new(0,0,0)
         
-        local Main = CoreGui:FindFirstChild(Container).Main
+        local Main = hui():FindFirstChild('nil').Main
         
         local function Update(Input)
             local Delta = Input.Position - DragStart
@@ -240,7 +224,7 @@ do
         BreakAllLoops = true
 
         for _, UI in next, CoreGui:GetChildren() do
-            if UI.Name == 'Visual Command UI Library | .gg/puxxCphTnK' then
+            if UI.Name == 'nil' then
                 for _, Item in next, UI.Main:GetChildren() do
                     if Item.Name ~= 'MainCorner' and Item.Name ~= 'MainStroke' then
                         Item:Destroy()
@@ -275,12 +259,12 @@ Library.Themes = {
         PrimaryTextColor = Color3.fromRGB(0, 0, 0),
         SecondaryTextColor = Color3.fromRGB(75, 75, 75)
     },
-    ['discord'] = {
-        BackgroundColor = Color3.fromRGB(54, 57, 63),
+    ['darker'] = {
+        BackgroundColor = Color3.fromRGB(24, 27, 33),
         PrimaryTextColor = Color3.fromRGB(255, 255, 255),
-        SecondaryTextColor = Color3.fromRGB(110, 110, 115),
-        AccentColor = Color3.fromRGB(75, 75, 75),
-        SecondaryColor = Color3.fromRGB(59, 65, 72)
+        SecondaryTextColor = Color3.fromRGB(90, 90, 85),
+        AccentColor = Color3.fromRGB(45, 45, 45),
+        SecondaryColor = Color3.fromRGB(39, 35, 52)
     },
     ['redandblack'] = {
         BackgroundColor = Color3.fromRGB(0, 0, 0),
@@ -352,8 +336,8 @@ Library.Theme = nil
 -- // CreateWindow - Name, IntroText, IntroIcon, IntroBlur, IntroBlurIntensity, Theme, Position, Draggable, Prefix
 function Library:CreateWindow(Properties)
     -- // Properties
-    local Name = Utility:GetProperty('Window', 'Name', Properties) or 'Visual Command UI Library'
-    local IntroText = Utility:GetProperty('Window', 'IntroText', Properties) or 'Visual Command UI Library'
+    local Name = Utility:GetProperty('Window', 'Name', Properties) or 'nil'
+    local IntroText = Utility:GetProperty('Window', 'IntroText', Properties) or 'nil'
     local IntroIcon = Utility:GetProperty('Window', 'IntroIcon', Properties) or 'rbxassetid://10618644218'
     local IntroBlur = Utility:GetProperty('Window', 'IntroBlur', Properties) or false
     local IntroBlurIntensity = Utility:GetProperty('Window', 'IntroBlurIntensity', Properties) or 15
@@ -374,37 +358,10 @@ function Library:CreateWindow(Properties)
     -- // Destroy Old UI
     Utility:Destroy()
 
-    function randomString()
-        local length = math.random(10,20)
-        local array = {}
-        for i = 1, length do
-            array[i] = string.char(math.random(32, 126))
-        end
-        return table.concat(array)
-    end
-    
-    PARENT = nil
-    if get_hidden_gui or gethui then
-        local hiddenUI = get_hidden_gui or gethui
-        local Main = Instance.new("ScreenGui")
-        Main.Name = randomString()
-        Main.Parent = hiddenUI()
-        PARENT = Main
-    elseif (not is_sirhurt_closure) and (syn and syn.protect_gui) then
-        local Main = Instance.new("ScreenGui")
-        Main.Name = randomString()
-        syn.protect_gui(Main)
-        Main.Parent = COREGUI
-        PARENT = Main
-    elseif COREGUI:FindFirstChild('RobloxGui') then
-        PARENT = COREGUI.RobloxGui
-    end
-
     -- // Create Elements
-    _G.Container = Utility:Create('ScreenGui', {
-        Parent = COREGUI,
-        PARENT = Container,
-        Name = randomString(),
+    local Container = Utility:Create('ScreenGui', {
+        Parent = hui(),
+        Name = 'nil',
         ResetOnSpawn = false
     }, {
         Utility:Create('Frame', {
