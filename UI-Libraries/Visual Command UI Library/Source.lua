@@ -1020,15 +1020,6 @@ function Library:CreateWindow(Properties)
             end
         end
 
-        if NumberOfArguments > #Arguments then
-            local Missing = ''
-            
-            for Index = 1, NumberOfArguments do
-                if not Arguments[Index] then
-                    Missing = Missing .. tostring(Command.Arguments[Index])
-                end
-            end
-
             if not HoverDebounce then
                 if Main.Position.Y == UDim.new(1, 0) or Main.Position.Y == UDim.new(0, -36) then
                     CommandInput.Text = ''
