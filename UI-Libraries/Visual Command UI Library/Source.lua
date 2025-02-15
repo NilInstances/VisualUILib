@@ -1224,7 +1224,6 @@ function Library:CreateWindow(Properties)
             for _, Instance in next, CommandsHolderScrolling:GetChildren() do
                 if not Instance:IsA('UIListLayout') then
                     Instance.Visible = true
-
                     UpdateFrameSizes()
                 end
             end
@@ -1239,22 +1238,31 @@ function Library:CreateWindow(Properties)
                     Full = Full .. Split[Index]
                 end
             end
-
+    
             CommandInput.Text = Full
-
+    
             for _, Instance in next, CommandsHolderScrolling:GetChildren() do
                 if not Instance:IsA('UIListLayout') then
                     if string.find(Instance.Name:gsub('CommandHolder', ''):lower(), CommandInput.Text:lower()) then
                         Instance.Visible = true
-
                         UpdateFrameSizes()
                     else
-
                         Instance.Visible = false
-
                         UpdateFrameSizes()
                     end
                 end
+            end
+    
+            -- Auto-complete suggestion
+            local suggestions = {}
+            for commandName, _ in pairs(Commands) do
+                if commandName:sub(1, #CommandInput.Text) == CommandInput.Text:lower() then
+                    table.insert(suggestions, commandName)
+                end
+            end
+    
+            if #suggestions == 1 then
+                CommandInput.Text = suggestions[1]
             end
         end
     end)
